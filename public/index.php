@@ -39,7 +39,6 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header -->
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
@@ -63,7 +62,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="bg-blue-500 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
@@ -86,10 +84,9 @@
         </div>
     </section>
 
-    <!-- Main Content -->
+
     <main class="container mx-auto px-4 py-8">
         <div class="flex flex-col lg:flex-row gap-8">
-            <!-- Filters Sidebar -->
             <aside class="w-full lg:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
                 <div class="mb-6">
                     <div class="flex justify-between items-center cursor-pointer" onclick="toggleFilterSection('price-filter')">
@@ -184,7 +181,6 @@
                 </button>
             </aside>
 
-            <!-- Property Listings -->
             <div class="w-full lg:w-3/4">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold text-gray-800">Imóveis Disponíveis</h2>
@@ -200,7 +196,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Property Card 1 -->
+
                     <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
                         <div class="relative">
                             <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
@@ -229,7 +225,6 @@
                         </div>
                     </div>
 
-                    <!-- Property Card 2 -->
                     <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
                         <div class="relative">
                             <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
@@ -255,7 +250,6 @@
                         </div>
                     </div>
 
-                    <!-- Property Card 3 -->
                     <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
                         <div class="relative">
                             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
@@ -284,7 +278,6 @@
                         </div>
                     </div>
 
-                    <!-- Property Card 4 -->
                     <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
                         <div class="relative">
                             <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
@@ -309,7 +302,6 @@
                         </div>
                     </div>
 
-                    <!-- Property Card 5 -->
                     <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
                         <div class="relative">
                             <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
@@ -335,7 +327,6 @@
                         </div>
                     </div>
 
-                    <!-- Property Card 6 -->
                     <div class="property-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
                         <div class="relative">
                             <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
