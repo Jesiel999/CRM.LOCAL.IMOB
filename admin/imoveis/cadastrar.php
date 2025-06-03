@@ -1,13 +1,13 @@
-<form id="conteudo" method="POST" action="core/cadastro/imoveis.php" class="mt-6 space-y-6" enctype="multipart/form-data">
+<form id="conteudo" method="POST" action="core/cadastro/imoveis/insert.php" class="mt-6 space-y-6" enctype="multipart/form-data">
  
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Título do Imóvel*</label>
-            <input name="titulo" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input name="titulo" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Tipo*</label>
-            <select name="tipo" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <select name="tipo" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
                 <option value="">Selecione...</option>
                 <option value="Venda">Venda</option>
                 <option value="Aluguel">Aluguel</option>
@@ -15,7 +15,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Categoria*</label>
-            <select name="categoria" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <select name="categoria" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
                 <option value="">Selecione...</option>
                 <option value="Casa">Casa</option>
                 <option value="Apartamento">Apartamento</option>
@@ -29,13 +29,13 @@
 
     <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Descrição*</label>
-        <textarea name="descricao" rows="3" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required></textarea>
+        <textarea name="descricao" rows="3" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" ></textarea>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Status*</label>
-            <select name="status" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <select name="status" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
                 <option value="">Selecione...</option>
                 <option value="Disponível">Disponível</option>
                 <option value="Alugado">Alugado</option>
@@ -46,7 +46,7 @@
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">CEP*</label>
             <div class="flex">
-                <input name="cep" type="text" class="w-full px-3 py-2 border rounded-l-lg focus:ring-blue-500 focus:border-blue-500" required>
+                <input name="cep" type="text" class="w-full px-3 py-2 border rounded-l-lg focus:ring-blue-500 focus:border-blue-500">
                 <button type="button" class="px-4 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700">Buscar</button>
             </div>
         </div>
@@ -56,11 +56,11 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Rua*</label>
-            <input name="rua" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input name="rua" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Número*</label>
-            <input name="numero" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input name="numero" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
@@ -71,15 +71,15 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Bairro*</label>
-            <input name="bairro" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input name="bairro" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Cidade*</label>
-            <input name="cidade" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input name="cidade" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Estado*</label>
-            <select name="estado" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <select name="estado" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
                 <option value="">Selecione...</option>
                 <option>AC</option>
                 <option>AL</option>
@@ -115,11 +115,11 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Área útil (m²)*</label>
-            <input name="areautil" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input name="areautil" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Área total (m²)*</label>
-            <input name="areatotal" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input name="areatotal" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
         </div>
     </div>
 
@@ -181,8 +181,7 @@
             type="file" 
             multiple 
             accept="image/*" 
-            class="hidden" 
-            required>
+            class="hidden">
     </div>
     <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Fotos do Imóvel*</label>
@@ -201,7 +200,7 @@
             multiple 
             accept=".pdf,image/*" 
             class="hidden" 
-            required>
+            >
     </div>
 
     <div class="flex justify-end space-x-4">

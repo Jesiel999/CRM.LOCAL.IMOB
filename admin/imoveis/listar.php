@@ -23,7 +23,7 @@
         <div class="p-4">
             <div class="flex justify-between items-start">
                 <h3 class="text-lg font-semibold"><?php echo htmlspecialchars($imovel['titulo'])?></h3>
-                <span class="text-sm text-gray-500"><?php echo htmlspecialchars($imovel['id'])?></span>
+                <span class="text-sm text-gray-500"><?php echo htmlspecialchars($imovel['codigo'])?></span>
             </div>
             <p class="text-gray-600 text-sm mt-1"><?php echo htmlspecialchars($imovel['bairro'] . " , " . $imovel['cidade'] . " - " . $imovel['estado'])?></p>
             

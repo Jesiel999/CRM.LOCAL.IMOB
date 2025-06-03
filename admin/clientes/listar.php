@@ -1,7 +1,6 @@
 <?php include_once '../../core/db.php'; ?>
-<?php include_once '../../core/listar/imoveis.php'?>
+<?php include_once '../../core/listar/clientes/select.php'?>
 
-<?php foreach ($imoveis as $imovel): ?>
 <div class="w-full h-full bg-white rounded-lg shadow overflow-hidden">
     <div class="p-4 border-b flex justify-between items-center">
         <div class="flex space-x-4">
@@ -33,6 +32,7 @@
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
                 </tr>
             </thead>
+            <?php foreach ($clientes as $cliente): ?>
             <tbody class="bg-white divide-y divide-gray-200">
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
@@ -70,6 +70,7 @@
                 </tr>
                 <!-- More client rows... -->
             </tbody>
+            <?php endforeach; ?>
         </table>
     </div>
     <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
@@ -101,5 +102,5 @@
         </div>
     </div>
 </div>
-<?php endforeach; ?>
+
 

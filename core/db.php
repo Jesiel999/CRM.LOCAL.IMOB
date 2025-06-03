@@ -1,7 +1,6 @@
 <?php
 $dbHost = 'localhost';
-$dbUsername = 'JESIEL';
-$dbPassword = '071215';
+include_once '../../../config/bd.php';
 $dbName = 'crmlocal';
 
 try {
