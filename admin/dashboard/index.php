@@ -1,10 +1,14 @@
+<?php include_once '../../core/db.php'; ?>
+<?php include_once '../../core/consulta/imoveis/quantidadeImoveis.php'; ?>
+<?php include_once '../../core/consulta/clientes/quantidadeClientes.php'; ?>
+
 <div id="property-grid-view">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <div class="bg-white p-6 rounded-lg shadow">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-500">Imóveis Disponíveis</p>
-                    <p class="text-2xl font-bold">24</p>
+                    <p class="text-2xl font-bold"><?php echo $totalImovel?></p>
                     <p class="text-sm text-gray-500 mt-1"><span class="text-green-500">+2</span> desde o mês passado</p>
                 </div>
                 <div class="p-3 rounded-full bg-blue-100 text-blue-600">
@@ -16,7 +20,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-500">Clientes Ativos</p>
-                    <p class="text-2xl font-bold">58</p>
+                    <p class="text-2xl font-bold"><?php echo $totalClientes?></p>
                     <p class="text-sm text-gray-500 mt-1"><span class="text-green-500">+5</span> desde o mês passado</p>
                 </div>
                 <div class="p-3 rounded-full bg-green-100 text-green-600">
