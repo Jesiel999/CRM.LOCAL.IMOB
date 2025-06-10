@@ -3,7 +3,8 @@
 $query = "
 SELECT imoveis.*, 
        imoveis_fotos.caminho, 
-       imoveis_fotos.nome_arquivo
+       imoveis_fotos.nome_arquivo,
+       imoveis_fotos.ordem_exibicao
 FROM imoveis
 LEFT JOIN imoveis_fotos ON imoveis.id = imoveis_fotos.imovel_id
 ORDER BY imoveis.id, imoveis_fotos.ordem_exibicao ASC
@@ -25,8 +26,13 @@ foreach ($resultados as $row) {
         ];
     }
 
-    if (!empty($row['caminho']) && !empty($row['nome_arquivo'])) {
-        $imoveis[$id]['fotos'][] = $row['caminho'] . '/' . $row['nome_arquivo'];
+    if (!empty($row['nome_arquivo'])) {
+       $nome_arquivo = $row['nome_arquivo'];
+
+        preg_match('/\d+/', $nome_arquivo, $matches);
+        $numero = isset($matches[0]) ? $matches[0] : null;
+
+        $imoveis[$id]['fotos'][] = $nome_arquivo;
     }
 }
 ?>

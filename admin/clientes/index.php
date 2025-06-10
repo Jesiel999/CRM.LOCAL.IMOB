@@ -4,7 +4,7 @@
 <div class="w-full h-full bg-white rounded-lg shadow overflow-hidden">
     <div class="p-4 border-b flex justify-between items-center">
         <div class="flex space-x-4">
-            <button onclick="sidebar('admin/imoveis/cadastrar.php')" class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg shadow transition">
+            <button onclick="sidebar('admin/clientes/cadastrar.php')" class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg shadow transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5"/>
                 </svg>
@@ -47,17 +47,17 @@
                                 <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
                             </div>
                             <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">Carlos Eduardo</div>
-                                <div class="text-sm text-gray-500">CPF: 123.456.789-00</div>
+                                <div class="text-sm font-medium text-gray-900"><?php echo $cliente['nome']?></div>
+                                <div class="text-sm text-gray-500">CPF: <?php echo $cliente['cpf_cnpj']?></div>
                             </div>
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <div>carlos@email.com</div>
-                        <div>(11) 98765-4321</div>
+                        <div><?php echo $cliente['email']?></div>
+                        <div><?php echo $cliente['telefone']?></div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Comprador</span>
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800"><?php echo $cliente['tipo_cliente']?></span>
                     </td>
                     <td class="px-6 py-4 text-sm text-gray-500">
                         <div class="flex flex-wrap">
@@ -74,7 +74,6 @@
                         <button class="text-red-600 hover:text-red-900"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
-                <!-- More client rows... -->
             </tbody>
             <?php endforeach; ?>
         </table>

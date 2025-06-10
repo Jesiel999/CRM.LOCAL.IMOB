@@ -438,12 +438,10 @@
     </footer>
 
     <script>
-        // Toggle favorite heart icon
         function toggleFavorite(element) {
             element.classList.toggle('active');
         }
 
-        // Toggle filter sections
         function toggleFilterSection(id) {
             const section = document.getElementById(id);
             const icon = section.previousElementSibling.querySelector('i');
@@ -453,7 +451,6 @@
             icon.classList.toggle('fa-chevron-up');
         }
 
-        // Initialize all filter sections as collapsed on mobile
         document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth < 1024) {
                 const filterSections = document.querySelectorAll('.filter-section');

@@ -1,6 +1,6 @@
 <?php
 include_once '../../core/db.php';
-include_once '../../core/listar/imoveis/imoveiseditar.php';
+include_once '../../core/consulta/imoveis/imoveiseditar.php';
 ?>
 
 <div id="conteudo" class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">

@@ -1,13 +1,14 @@
+<?php include_once '../../core/db.php'; ?>
 <form id="conteudo" method="POST" action="core/cadastro/imoveis/insert.php" class="mt-6 space-y-6" enctype="multipart/form-data">
  
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Título do Imóvel*</label>
-            <input name="titulo" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <input name="titulo" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Tipo*</label>
-            <select name="tipo" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <select name="tipo" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
                 <option value="">Selecione...</option>
                 <option value="Venda">Venda</option>
                 <option value="Aluguel">Aluguel</option>
@@ -15,7 +16,7 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Categoria*</label>
-            <select name="categoria" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <select name="categoria" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
                 <option value="">Selecione...</option>
                 <option value="Casa">Casa</option>
                 <option value="Apartamento">Apartamento</option>
@@ -29,13 +30,13 @@
 
     <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Descrição*</label>
-        <textarea name="descricao" rows="3" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" ></textarea>
+        <textarea name="descricao" rows="3" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required></textarea>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Status*</label>
-            <select name="status" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <select name="status" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
                 <option value="">Selecione...</option>
                 <option value="Disponível">Disponível</option>
                 <option value="Alugado">Alugado</option>
@@ -56,30 +57,30 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Rua*</label>
-            <input name="rua" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <input name="rua" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Número*</label>
-            <input name="numero" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <input name="numero" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
-            <input name="complemento" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <input name="complemento" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Bairro*</label>
-            <input name="bairro" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <input name="bairro" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Cidade*</label>
-            <input name="cidade" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <input name="cidade" type="text" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Estado*</label>
-            <select name="estado" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <select name="estado" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
                 <option value="">Selecione...</option>
                 <option>AC</option>
                 <option>AL</option>
@@ -115,11 +116,11 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Área útil (m²)*</label>
-            <input name="areautil" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <input name="areautil" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Área total (m²)*</label>
-            <input name="areatotal" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" >
+            <input name="areatotal" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
     </div>
 
@@ -127,19 +128,19 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Quartos</label>
-            <input name="quartos" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <input name="quartos" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Suítes</label>
-            <input name="suites" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <input name="suites" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Banheiros</label>
-            <input name="banheiro" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <input name="banheiro" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Vagas</label>
-            <input name="vaga" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <input name="vaga" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
     </div>
 
@@ -150,7 +151,7 @@
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <span class="text-gray-500">R$</span>
                 </div>
-                <input name="valordevenda" type="text" class="pl-10 w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                <input name="valordevenda" type="text" class="pl-10 w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
             </div>
         </div>
         <div>
@@ -159,7 +160,7 @@
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <span class="text-gray-500">R$</span>
                 </div>
-                <input name="valordelocacao" type="text" class="pl-10 w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                <input name="valordelocacao" type="text" class="pl-10 w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
             </div>
         </div>
     </div>

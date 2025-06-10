@@ -1,4 +1,5 @@
 <?php
+include_once '../../core/db.php'; 
 $query = "SELECT COUNT(*) AS total_imoveis FROM imoveis WHERE status = 'disponivel' ";
 
 $stmt = $conn->prepare($query);

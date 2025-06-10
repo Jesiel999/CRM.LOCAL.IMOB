@@ -1,7 +1,6 @@
 <?php include_once '../../core/db.php'; ?>
 <?php include_once '../../core/consulta/imoveis/imoveis.php'; ?>
 <?php include_once '../../core/consulta/imoveis/quantidadeImoveis.php';?>
-
 <button onclick="sidebar('admin/imoveis/cadastrar.php')" class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg shadow transition mb-5">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5"/>
@@ -16,66 +15,45 @@
     ?>
     <div class="property-card bg-white rounded-lg shadow overflow-hidden transition duration-300 ease-in-out">
         <div class="relative">
-            <div id="carousel" class="flex overflow-x scroll-smooth no-scrollbar">
+            <div id="carousel-<?php echo $imovel['codigo']; ?>" class="flex overflow-x-auto scroll-smooth no-scrollbar">
                 <?php if (!empty($fotos)): ?>
                     <?php foreach ($fotos as $index => $foto): ?>
-                        <img id="fotoImovel"src="../../<?php echo $foto; ?>" 
+                        <img src="../../storage/imoveis/imagens/<?php echo $imovel['codigo'] . '/' . $foto; ?>" 
                             alt="Imagem do Imóvel" 
-                            class="w-full h-48 object-cover flex-shrink-0 snap-start">
+                            class="imagens w-full h-48 object-cover flex-shrink-0 snap-start">
                     <?php endforeach; ?>
                 <?php else: ?>
                     <img src="https://via.placeholder.com/800x600?text=Sem+Imagem" 
                         alt="Imagem do Imóvel" 
-                        class="w-full h-48 object-cover flex-shrink-0 snap-start">
+                        class="imagens w-full h-48 object-cover flex-shrink-0 snap-start">
                 <?php endif; ?>
             </div>
+
             <div class="absolute top-2 right-2">
                 <span class="status-badge bg-green-100 text-green-800">
                     <?php echo htmlspecialchars($imovel['tipo']); ?>
                 </span>
             </div>
+
             <div class="absolute bottom-2 left-2">
                 <span class="status-badge bg-blue-100 text-blue-800">
-                    <?php echo "Venda: R$ " . number_format($imovel['valordevenda'], 2, ',', '.'); ?>
+                    <?php if( $imovel['valordevenda'] != '0') { echo 'Venda: R$ ' . number_format($imovel['valordevenda'], 2, ',', '.');
+                    } else{
+                echo 'Aluguel: R$ ' . number_format($imovel['valordelocacao'], 2, ',', '.');
+                } ?>
                 </span>
             </div>
+
             <div class="absolute bottom-2 right-2 flex gap-2">
                 <?php 
                 $total = !empty($fotos) ? count($fotos) : 1;
                 for ($i = 0; $i < $total; $i++): 
                 ?>
-                    <button onclick="goToSlide(<?php echo $i; ?>)"
+                    <button onclick="goToSlide('<?php echo $imovel['codigo']; ?>', <?php echo $i; ?>)"
                             class="w-3 h-3 rounded-full bg-white border border-gray-400 hover:bg-blue-500 transition"></button>
                 <?php endfor; ?>
             </div>
         </div>
-        <script>
-            const carousel = document.getElementById('carousel');
-            const totalSlides = <?php echo $total; ?>;
-            const caminhoFoto = $foto.match(/\d+/);
-            var fotosImoveis = document.getElementByClassName("fotoImovel");
-
-            function showSlide(index) {
-                if (index < 0) {
-                    fotosImoveisIndex = fotosImoveis.length - caminhoFoto; 
-                } else if (index >= fotosImoveis.length) {
-                    fotosImoveisIndex = 0;
-                }
-                for (var i = 0; i < fotosImoveis.length; i++) {
-                    fotosImoveis[i].classList.remove("active");
-                }
-                fotosImoveis[fotosImoveisIndex].classList.add("active");
-            }
-
-            function nextSlide() {
-                fotosImoveisIndex++;
-                showSlide(fotosImoveisIndex);
-            }
-            setInterval(nextSlide, 5000);
-        </script>
-
-
-
         <div class="p-4">
             <div class="flex justify-between items-start">
                 <h3 class="text-lg font-semibold"><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
@@ -103,7 +81,7 @@
                     <span class="text-sm font-medium"><?php echo htmlspecialchars($imovel['areautil']); ?> m²</span>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="sidebar('/public/imoveis/exibir.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-blue-600 hover:text-blue-800">
+                    <button onclick="sidebar('public/imoveis/exibir.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-blue-600 hover:text-blue-800">
                         <i class="fas fa-eye"></i>
                     </button>
                     <button onclick="sidebar('admin/imoveis/editar.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-yellow-600 hover:text-yellow-800">

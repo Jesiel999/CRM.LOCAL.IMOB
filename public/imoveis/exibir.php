@@ -1,57 +1,52 @@
 <?php
 include_once '../../core/db.php';
-include_once '../../core/listar/imoveiseditar.php';
+include_once '../../core/consulta/imoveis/imoveisexibir.php';
 ?>
- <div class="flex items-center text-sm text-gray-500 mb-6">
-    <a href="#" class="hover:text-blue-500">Home</a>
-    <span class="mx-2">/</span>
-    <a href="#" class="hover:text-blue-500">Imóveis à venda</a>
-    <span class="mx-2">/</span>
-    <span class="text-gray-400">Detalhes do imóvel</span>
-</div>
-
 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
     <div>
-        <h1 class="text-3xl font-bold text-gray-800">Casa Moderna - Jardins</h1>
+        <h1 class="text-3xl font-bold text-gray-800"><?php echo strtoupper(htmlspecialchars($imovel['categoria'])) . ' - ' . htmlspecialchars($imovel['titulo'])?></h1>
         <div class="flex items-center mt-2">
             <i class="fas fa-map-marker-alt text-gray-400 mr-2"></i>
-            <span class="text-gray-600">Rua Oscar Freire, 1200 - Jardins, São Paulo - SP</span>
+            <span class="text-gray-600"><?php echo htmlspecialchars($imovel['rua']) . ', ' . htmlspecialchars($imovel['numero']) . ' - ' . htmlspecialchars($imovel['bairro']) . ', ' . htmlspecialchars($imovel['cidade']) . ' - ' . htmlspecialchars($imovel['estado'])?></span>
         </div>
     </div>
     <div class="mt-4 md:mt-0">
-        <span class="text-2xl font-bold text-blue-500">R$ 1.250.000</span>
-        <span class="text-gray-500 block text-right">Condomínio: R$ 1.200</span>
+        <span class="text-2xl font-bold text-blue-500"><?php if ($imovel['valordevenda'] != '0'){
+                echo 'R$' . number_format($imovel['valordevenda'], 2, ',', '.');
+            } else {
+                echo 'R$' . number_format($imovel['valordelocacao'], 2, ',', '.');
+            }
+                ?></span>
     </div>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
 
     <div class="lg:col-span-3 rounded-lg overflow-hidden">
-        <img id="main-image" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+        <img id="main-image" src="<?php echo "../../storage/imoveis/imagens/" . $imovel['codigo'] . "/" . $imovel['nome_arquivo']?>" 
                 alt="Casa moderna" class="w-full h-96 object-cover property-image rounded-lg">
     </div>
-
+    <?php foreach ($imoveis as $id => $dados): ?>
+    <?php 
+        $fotos = $dados['fotos'];
+    ?>
+    
     <div class="grid grid-cols-2 lg:grid-cols-1 gap-2">
-        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
-                alt="Sala de estar" 
-                class="h-28 w-full object-cover rounded-lg thumbnail active"
-                onclick="changeMainImage(this)">
-        
-        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
-                alt="Cozinha" 
-                class="h-28 w-full object-cover rounded-lg thumbnail"
-                onclick="changeMainImage(this)">
-        
-        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=80" 
-                alt="Quarto" 
-                class="h-28 w-full object-cover rounded-lg thumbnail"
-                onclick="changeMainImage(this)">
-        
-        <img src="https://images.unsplash.com/photo-1600566752227-8f3b1d137d92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                alt="Área externa" 
-                class="h-28 w-full object-cover rounded-lg thumbnail"
-                onclick="changeMainImage(this)">
+        <?php if (!empty($fotos) && count($fotos) > 1): ?>
+            <?php foreach (array_slice($fotos, 1) as $foto): ?> 
+                <img
+                    src="../../storage/imoveis/imagens/<?php echo $imovel['codigo'] . '/' . $foto; ?>"
+                    alt="Imagem do Imóvel" 
+                    class="h-28 w-full object-cover rounded-lg thumbnail active">
+            <?php endforeach; ?>
+        <?php else: ?>
+            <img src="https://via.placeholder.com/800x600?text=Sem+Imagem" 
+                alt="Imagem do Imóvel" 
+                class="imagens w-full h-48 object-cover flex-shrink-0 snap-start">
+        <?php endif; ?>
     </div>
+<?php endforeach; ?>
+
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
@@ -61,7 +56,6 @@ include_once '../../core/listar/imoveiseditar.php';
         <div class="flex border-b mb-6">
             <button class="tab-button px-4 py-2 mr-2 active" onclick="changeTab('description')">Descrição</button>
             <button class="tab-button px-4 py-2 mr-2" onclick="changeTab('features')">Características</button>
-            <button class="tab-button px-4 py-2 mr-2" onclick="changeTab('location')">Localização</button>
             <button class="tab-button px-4 py-2" onclick="changeTab('contact')">Contato</button>
         </div>
 
@@ -90,27 +84,23 @@ include_once '../../core/listar/imoveiseditar.php';
                     <ul class="space-y-2 text-gray-600">
                         <li class="flex justify-between">
                             <span>Área útil</span>
-                            <span class="font-medium">180 m²</span>
+                            <span class="font-medium"><?php echo $imovel['areautil'] ?> m²</span>
                         </li>
                         <li class="flex justify-between">
                             <span>Área total</span>
-                            <span class="font-medium">300 m²</span>
+                            <span class="font-medium"><?php echo $imovel['areatotal'] ?> m²</span>
                         </li>
                         <li class="flex justify-between">
                             <span>Quartos</span>
-                            <span class="font-medium">3</span>
+                            <span class="font-medium"><?php echo $imovel['quartos'] ?></span>
                         </li>
                         <li class="flex justify-between">
                             <span>Banheiros</span>
-                            <span class="font-medium">2 (1 suíte)</span>
+                            <span class="font-medium"><?php echo $imovel['banheiro'] ?></span>
                         </li>
                         <li class="flex justify-between">
                             <span>Vagas</span>
-                            <span class="font-medium">2</span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span>Ano de construção</span>
-                            <span class="font-medium">2015</span>
+                            <span class="font-medium"><?php echo $imovel['vaga'] ?></span>
                         </li>
                     </ul>
                 </div>
@@ -158,34 +148,6 @@ include_once '../../core/listar/imoveiseditar.php';
             </div>
         </div>
 
-        <div id="location" class="tab-content hidden">
-            <h2 class="text-xl font-bold text-gray-800 mb-4">Localização</h2>
-            <div class="map-container mb-4 rounded-lg overflow-hidden">
-
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=-23.563987,-46.653568&zoom=15&size=800x300&maptype=roadmap&markers=color:red%7C-23.563987,-46.653568&key=YOUR_API_KEY" 
-                        alt="Mapa da localização" class="w-full h-full object-cover">
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="font-bold text-gray-700 mb-2">Endereço</h3>
-                    <p class="text-gray-600">
-                        Rua Oscar Freire, 1200<br>
-                        Jardins - São Paulo/SP<br>
-                        CEP: 01426-001
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-gray-700 mb-2">Próximo a</h3>
-                    <ul class="text-gray-600 space-y-1">
-                        <li><i class="fas fa-store mr-2 text-blue-500"></i> Shopping Iguatemi - 500m</li>
-                        <li><i class="fas fa-subway mr-2 text-blue-500"></i> Metrô Trianon-Masp - 800m</li>
-                        <li><i class="fas fa-school mr-2 text-blue-500"></i> Escola St. Paul's - 1km</li>
-                        <li><i class="fas fa-hospital mr-2 text-blue-500"></i> Hospital Sírio-Libanês - 1.2km</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         <div id="contact" class="tab-content hidden">
             <h2 class="text-xl font-bold text-gray-800 mb-4">Entre em contato</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -216,11 +178,11 @@ include_once '../../core/listar/imoveiseditar.php';
                 </div>
                 <div>
                     <h3 class="font-bold text-gray-700 mb-2">Agende uma visita</h3>
-                    <form class="space-y-3">
-                        <input type="text" placeholder="Seu nome" class="w-full p-3 border rounded-lg">
-                        <input type="email" placeholder="Seu e-mail" class="w-full p-3 border rounded-lg">
-                        <input type="tel" placeholder="Seu telefone" class="w-full p-3 border rounded-lg">
-                        <textarea placeholder="Mensagem (opcional)" class="w-full p-3 border rounded-lg h-24"></textarea>
+                    <form action="../../services/email/envioContato.php" method="POST" class="space-y-3" >
+                        <input type="text" name="nome" placeholder="Seu nome" class="w-full p-3 border rounded-lg" required>
+                        <input type="email" name="email" placeholder="Seu e-mail" class="w-full p-3 border rounded-lg" required>
+                        <input type="tel" name="telefone" placeholder="Seu telefone" class="w-full p-3 border rounded-lg" required>
+                        <textarea placeholder="Mensagem (opcional)" name="mensagem" class="w-full p-3 border rounded-lg h-24"></textarea>
                         <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold">
                             Enviar mensagem
                         </button>
@@ -252,87 +214,100 @@ include_once '../../core/listar/imoveiseditar.php';
                     <i class="fas fa-envelope mr-2"></i> Enviar e-mail
                 </button>
             </div>
-            
-            <div class="border-t pt-4">
-                <h3 class="font-bold text-gray-700 mb-2">Financiamento</h3>
-                <p class="text-gray-600 mb-3">
-                    Simule seu financiamento e descubra as parcelas mensais deste imóvel.
-                </p>
-                <button class="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 rounded-lg font-medium">
-                    Simular financiamento
-                </button>
-            </div>
         </div>
     </div>
 </div>
+
+<?php include_once '../../core/consulta/imoveis/imoveis.php'; ?>
 
 <div class="mb-12">
     <h2 class="text-2xl font-bold text-gray-800 mb-6">Imóveis semelhantes</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
-                        alt="Apartamento similar" class="w-full h-48 object-cover">
-                <div class="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
-                    <i class="fas fa-heart text-gray-400 cursor-pointer"></i>
-                </div>
-            </div>
-            <div class="p-4">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-gray-800">Apartamento - Higienópolis</h3>
-                    <span class="text-blue-500 font-bold">R$ 980.000</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-3">São Paulo - SP</p>
-                <div class="flex justify-between text-sm text-gray-500 border-t pt-3">
-                    <span><i class="fas fa-bed mr-1"></i> 3 quartos</span>
-                    <span><i class="fas fa-bath mr-1"></i> 2 banheiros</span>
-                    <span><i class="fas fa-ruler-combined mr-1"></i> 110m²</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1600566752227-8f3b1d137d92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                        alt="Casa similar" class="w-full h-48 object-cover">
-                <div class="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
-                    <i class="fas fa-heart text-gray-400 cursor-pointer"></i>
-                </div>
-            </div>
-            <div class="p-4">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-gray-800">Casa - Vila Nova Conceição</h3>
-                    <span class="text-blue-500 font-bold">R$ 1.450.000</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-3">São Paulo - SP</p>
-                <div class="flex justify-between text-sm text-gray-500 border-t pt-3">
-                    <span><i class="fas fa-bed mr-1"></i> 4 quartos</span>
-                    <span><i class="fas fa-bath mr-1"></i> 3 banheiros</span>
-                    <span><i class="fas fa-ruler-combined mr-1"></i> 220m²</span>
-                </div>
-            </div>
-        </div>
+    <?php foreach ($imoveis as $imovelData): 
+        $imovel = $imovelData['dados'];
+        $fotos = $imovelData['fotos'];
+    ?>
+        <div class="property-card bg-white rounded-lg shadow overflow-hidden transition duration-300 ease-in-out">
+                <div class="relative">
+                    <div id="carousel-<?php echo $imovel['codigo']; ?>" class="flex overflow-x-auto scroll-smooth no-scrollbar">
+                        <?php if (!empty($fotos)): ?>
+                            <?php foreach ($fotos as $index => $foto): ?>
+                                <img src="../../storage/imoveis/imagens/<?php echo $imovel['codigo'] . '/' . $foto; ?>" 
+                                    alt="Imagem do Imóvel" 
+                                    class="imagens w-full h-48 object-cover flex-shrink-0 snap-start">
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/800x600?text=Sem+Imagem" 
+                                alt="Imagem do Imóvel" 
+                                class="imagens w-full h-48 object-cover flex-shrink-0 snap-start">
+                        <?php endif; ?>
+                    </div>
 
-        <div class="bg-white rounded-lg overflow-hidden shadow-md">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
-                        alt="Cobertura similar" class="w-full h-48 object-cover">
-                <div class="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md">
-                    <i class="fas fa-heart text-gray-400 cursor-pointer"></i>
+                    <div class="absolute top-2 right-2">
+                        <span class="status-badge bg-green-100 text-green-800">
+                            <?php echo htmlspecialchars($imovel['tipo']); ?>
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-2 left-2">
+                        <span class="status-badge bg-blue-100 text-blue-800">
+                            <?php if( $imovel['valordevenda'] != '0') { echo 'Venda: R$ ' . number_format($imovel['valordevenda'], 2, ',', '.');
+                            } else{
+                        echo 'Aluguel: R$ ' . number_format($imovel['valordelocacao'], 2, ',', '.');
+                        } ?>
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-2 right-2 flex gap-2">
+                        <?php 
+                        $total = !empty($fotos) ? count($fotos) : 1;
+                        for ($i = 0; $i < $total; $i++): 
+                        ?>
+                            <button onclick="goToSlide('<?php echo $imovel['codigo']; ?>', <?php echo $i; ?>)"
+                                    class="w-3 h-3 rounded-full bg-white border border-gray-400 hover:bg-blue-500 transition"></button>
+                        <?php endfor; ?>
+                    </div>
                 </div>
-            </div>
             <div class="p-4">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-gray-800">Cobertura - Itaim Bibi</h3>
-                    <span class="text-blue-500 font-bold">R$ 2.150.000</span>
+                <div class="flex justify-between items-start">
+                    <h3 class="text-lg font-semibold"><?php echo htmlspecialchars($imovel['titulo']); ?></h3>
+                    <span class="text-sm text-gray-500"><?php echo htmlspecialchars($imovel['codigo']); ?></span>
                 </div>
-                <p class="text-gray-600 text-sm mb-3">São Paulo - SP</p>
-                <div class="flex justify-between text-sm text-gray-500 border-t pt-3">
-                    <span><i class="fas fa-bed mr-1"></i> 3 quartos</span>
-                    <span><i class="fas fa-bath mr-1"></i> 3 banheiros</span>
-                    <span><i class="fas fa-ruler-combined mr-1"></i> 180m²</span>
+                <p class="text-gray-600 text-sm mt-1">
+                    <?php echo htmlspecialchars($imovel['bairro'] . " , " . $imovel['cidade'] . " - " . $imovel['estado']); ?>
+                </p>
+                
+                <div class="mt-3 flex flex-wrap">
+                    <span class="text-sm text-gray-500 mr-3">
+                        <i class="fas fa-bed mr-1"></i> <?php echo htmlspecialchars($imovel['quartos']); ?> quartos
+                    </span>
+                    <span class="text-sm text-gray-500 mr-3">
+                        <i class="fas fa-bath mr-1"></i> <?php echo htmlspecialchars($imovel['banheiro']); ?> banheiros
+                    </span>
+                    <span class="text-sm text-gray-500">
+                        <i class="fas fa-car mr-1"></i> <?php echo htmlspecialchars($imovel['vaga']); ?> vagas
+                    </span>
+                </div>
+                
+                <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-gray-500">Área útil:</span>
+                        <span class="text-sm font-medium"><?php echo htmlspecialchars($imovel['areautil']); ?> m²</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="sidebar('public/imoveis/exibir.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button onclick="sidebar('admin/imoveis/editar.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-yellow-600 hover:text-yellow-800">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
+    <?php endforeach; ?>
     </div>
 </div>
+<script>
+    
+</script>

@@ -1,4 +1,5 @@
 <?php
+
 $query = "
 SELECT imoveis.*,
 	COUNT(imoveis_fotos.id) AS total_imagens
