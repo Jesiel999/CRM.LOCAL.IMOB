@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT COUNT(*) AS total_clientes FROM clientes WHERE status = 'disponivel' ";
+$query = "SELECT COUNT(*) AS total_clientes FROM clientes WHERE status = 'ativo' ";
 
 $stmt = $conn->prepare($query);
 $stmt->execute();

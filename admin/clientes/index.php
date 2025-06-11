@@ -1,5 +1,6 @@
 <?php include_once '../../core/db.php'; ?>
 <?php include_once '../../core/consulta/clientes/select.php'?>
+<?php include_once '../../core/consulta/clientes/quantidadeClientes.php'?>
 
 <div class="w-full h-full bg-white rounded-lg shadow overflow-hidden">
     <div class="p-4 border-b flex justify-between items-center">
@@ -69,9 +70,8 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/06/2023</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-eye"></i></button>
-                        <button class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>
-                        <button class="text-red-600 hover:text-red-900"><i class="fas fa-trash"></i></button>
+                        <button onclick="sidebar('admin/clientes/exibir.php?id=<?php echo $cliente['id']; ?>')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-eye"></i></button>
+                        <button onclick="sidebar('admin/clientes/editar.php?id=<?php echo $cliente['id']; ?>')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -85,9 +85,19 @@
         </div>
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="text-sm text-gray-700">
-                    Mostrando <span class="font-medium">1</span> a <span class="font-medium">10</span> de <span class="font-medium">42</span> resultados
-                </p>
+                <?php
+                $paginaAtual = $totalClientes ?? 1;
+                $porPagina = 25;
+                $inicio = ($paginaAtual - 1) * $porPagina + 1;
+                $fim = min($paginaAtual * $porPagina, $totalClientes);
+
+                if ($totalClientes == 0) {
+                    $mensagem = "Nenhum resultado encontrado.";
+                } else {
+                    $mensagem = "Mostrando $inicio a $porPagina de $totalClientes resultados";
+                }
+                ?>
+                <p class="text-sm text-gray-700"><?php echo $mensagem; ?></p>
             </div>
             <div>
                 <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">

@@ -19,7 +19,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">CPF/CNPJ*</label>
-            <input type="text" name="CPF_CNPJ" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+            <input type="text" name="cpf_cnpj" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">RG/IE</label>

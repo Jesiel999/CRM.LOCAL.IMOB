@@ -1,5 +1,5 @@
 <?php
-include_once '../db.php';
+include_once '../../db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':valordelocacao' => $valordelocacao
     ]);
 
-    header('Location: ../../');
+    header('Location: ../../../');
     exit;
 }
 ?>

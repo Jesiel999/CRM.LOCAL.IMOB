@@ -3,10 +3,10 @@ include_once '../../core/db.php';
 include_once '../../core/consulta/imoveis/imoveiseditar.php';
 ?>
 
-<div id="conteudo" class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
+<div id="conteudo" class="mx-auto bg-white p-6 rounded-lg shadow">
     <h2 class="text-2xl font-semibold mb-6">Editar Imóvel - <?php echo htmlspecialchars($imovel['titulo']); ?></h2>
 
-    <form action="core/editar/imoveis.php" enctype="multipart/form-data" method="POST">
+    <form action="core/editar/imoveis/imoveis.php" enctype="multipart/form-data" method="POST">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($imovel['id']); ?>">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
