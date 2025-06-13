@@ -1,8 +1,10 @@
 <?php
-include_once '../../db.php';
+include_once 'consulta.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
+
+
 
     $dados = [
         ':id'                   => $id,

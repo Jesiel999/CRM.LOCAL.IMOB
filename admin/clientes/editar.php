@@ -1,6 +1,6 @@
 <?php
 include_once '../../core/db.php';
-include_once '../../core/consulta/clientes/clienteseditar.php';
+include_once '../../core/editar/clientes/clientes.php';
 ?>
 
 <div id="conteudo" class="mx-auto bg-white p-6 rounded-lg shadow">
@@ -120,62 +120,58 @@ include_once '../../core/consulta/clientes/clienteseditar.php';
 
             <div>
                 <label class="block mb-1">Tipo Imovel</label>
-                <select name="tipo_imovel" class="w-full border rounded p-2">
-                    <option value="Casa" <?php if($cliente['tipo_imovel']=='Casa') echo 'selected'; ?>>Casa</option>
-                    <option value="Apartamento" <?php if($cliente['tipo_imovel']=='Apartamento') echo 'selected'; ?>>Apartamento</option>
-                    <option value="Comercial" <?php if($cliente['tipo_imovel']=='Comercial') echo 'selected'; ?>>Comercial</option>
-                    <option value="Terreno" <?php if($cliente['tipo_imovel']=='Terreno') echo 'selected'; ?>>Terreno</option>
-                    <option value="Rural" <?php if($cliente['tipo_imovel']=='Rural') echo 'selected'; ?>>Rural</option>
-                    <option value="Outros" <?php if($cliente['tipo_imovel']=='Outros') echo 'selected'; ?>>Outros</option>
+                <select name="imovel_interesse" class="w-full border rounded p-2">
+                    <option value="Casa" <?php if($cliente['imovel_interesse']=='Casa') echo 'selected'; ?>>Casa</option>
+                    <option value="Apartamento" <?php if($cliente['imovel_interesse']=='Apartamento') echo 'selected'; ?>>Apartamento</option>
+                    <option value="Comercial" <?php if($cliente['imovel_interesse']=='Comercial') echo 'selected'; ?>>Comercial</option>
+                    <option value="Terreno" <?php if($cliente['imovel_interesse']=='Terreno') echo 'selected'; ?>>Terreno</option>
+                    <option value="Rural" <?php if($cliente['imovel_interesse']=='Rural') echo 'selected'; ?>>Rural</option>
+                    <option value="Outros" <?php if($cliente['imovel_interesse']=='Outros') echo 'selected'; ?>>Outros</option>
                 </select>
             </div>
             <div>
                 <label class="block mb-1">Número de Quartos</label>
-                <input type="text" name="numero_quartos" value="<?php echo htmlspecialchars($cliente['numero_quartos']); ?>" class="w-full border rounded p-2">
+                <input type="text" name="quartos_min_interesse" value="<?php echo htmlspecialchars($cliente['quartos_min_interesse']); ?>" class="w-full border rounded p-2">
             </div>
             <div>
                 <label class="block mb-1">Área Mínima(m²)</label>
-                <input type="number" name="area_minima" value="<?php echo htmlspecialchars($cliente['area_minima']); ?>" class="w-full border rounded p-2">
+                <input type="number" name="area_min_interesse" value="<?php echo htmlspecialchars($cliente['area_min_interesse']); ?>" class="w-full border rounded p-2">
             </div>
             <div>
                 <label class="block mb-1">Estado Interesse</label>
-                <select name="estado_interesse" class="w-full border rounded p-2">
-                    <option value="AC" <?php if($cliente['estado_interesse']=='AC') echo 'selected'; ?>>AC</option>
-                    <option value="AL" <?php if($cliente['estado_interesse']=='AL') echo 'selected'; ?>>AL</option>
-                    <option value="AP" <?php if($cliente['estado_interesse']=='AP') echo 'selected'; ?>>AP</option>
-                    <option value="AM" <?php if($cliente['estado_interesse']=='AM') echo 'selected'; ?>>AM</option>
-                    <option value="BA" <?php if($cliente['estado_interesse']=='CE') echo 'selected'; ?>>CE</option>
-                    <option value="CE" <?php if($cliente['estado_interesse']=='CE') echo 'selected'; ?>>CE</option>
-                    <option value="DF" <?php if($cliente['estado_interesse']=='DF') echo 'selected'; ?>>DF</option>
-                    <option value="ES" <?php if($cliente['estado_interesse']=='ES') echo 'selected'; ?>>ES</option>
-                    <option value="GO" <?php if($cliente['estado_interesse']=='GO') echo 'selected'; ?>>GO</option>
-                    <option value="MA" <?php if($cliente['estado_interesse']=='MA') echo 'selected'; ?>>MA</option>
-                    <option value="MT" <?php if($cliente['estado_interesse']=='MT') echo 'selected'; ?>>MT</option>
-                    <option value="MS" <?php if($cliente['estado_interesse']=='MS') echo 'selected'; ?>>MS</option>
-                    <option value="MG" <?php if($cliente['estado_interesse']=='MG') echo 'selected'; ?>>MG</option>
-                    <option value="PA" <?php if($cliente['estado_interesse']=='PA') echo 'selected'; ?>>PA</option>
-                    <option value="PB" <?php if($cliente['estado_interesse']=='PB') echo 'selected'; ?>>PB</option>
-                    <option value="PR" <?php if($cliente['estado_interesse']=='PR') echo 'selected'; ?>>PR</option>
-                    <option value="PE" <?php if($cliente['estado_interesse']=='PE') echo 'selected'; ?>>PE</option>
-                    <option value="PI" <?php if($cliente['estado_interesse']=='PI') echo 'selected'; ?>>PI</option>
-                    <option value="RJ" <?php if($cliente['estado_interesse']=='RJ') echo 'selected'; ?>>RJ</option>
-                    <option value="RN" <?php if($cliente['estado_interesse']=='RN') echo 'selected'; ?>>RN</option>
-                    <option value="RS" <?php if($cliente['estado_interesse']=='RS') echo 'selected'; ?>>RS</option>
-                    <option value="RO" <?php if($cliente['estado_interesse']=='RO') echo 'selected'; ?>>RO</option>
-                    <option value="RR" <?php if($cliente['estado_interesse']=='RR') echo 'selected'; ?>>RR</option>
-                    <option value="SC" <?php if($cliente['estado_interesse']=='SC') echo 'selected'; ?>>SC</option>
-                    <option value="SP" <?php if($cliente['estado_interesse']=='SP') echo 'selected'; ?>>SP</option>
-                    <option value="SE" <?php if($cliente['estado_interesse']=='SE') echo 'selected'; ?>>SE</option>
-                    <option value="TO" <?php if($cliente['estado_interesse']=='TO') echo 'selected'; ?>>TO</option>
+                <select name="regioes_interesse" class="w-full border rounded p-2">
+                    <option value="AC" <?php if($cliente['regioes_interesse']=='AC') echo 'selected'; ?>>AC</option>
+                    <option value="AL" <?php if($cliente['regioes_interesse']=='AL') echo 'selected'; ?>>AL</option>
+                    <option value="AP" <?php if($cliente['regioes_interesse']=='AP') echo 'selected'; ?>>AP</option>
+                    <option value="AM" <?php if($cliente['regioes_interesse']=='AM') echo 'selected'; ?>>AM</option>
+                    <option value="BA" <?php if($cliente['regioes_interesse']=='CE') echo 'selected'; ?>>CE</option>
+                    <option value="CE" <?php if($cliente['regioes_interesse']=='CE') echo 'selected'; ?>>CE</option>
+                    <option value="DF" <?php if($cliente['regioes_interesse']=='DF') echo 'selected'; ?>>DF</option>
+                    <option value="ES" <?php if($cliente['regioes_interesse']=='ES') echo 'selected'; ?>>ES</option>
+                    <option value="GO" <?php if($cliente['regioes_interesse']=='GO') echo 'selected'; ?>>GO</option>
+                    <option value="MA" <?php if($cliente['regioes_interesse']=='MA') echo 'selected'; ?>>MA</option>
+                    <option value="MT" <?php if($cliente['regioes_interesse']=='MT') echo 'selected'; ?>>MT</option>
+                    <option value="MS" <?php if($cliente['regioes_interesse']=='MS') echo 'selected'; ?>>MS</option>
+                    <option value="MG" <?php if($cliente['regioes_interesse']=='MG') echo 'selected'; ?>>MG</option>
+                    <option value="PA" <?php if($cliente['regioes_interesse']=='PA') echo 'selected'; ?>>PA</option>
+                    <option value="PB" <?php if($cliente['regioes_interesse']=='PB') echo 'selected'; ?>>PB</option>
+                    <option value="PR" <?php if($cliente['regioes_interesse']=='PR') echo 'selected'; ?>>PR</option>
+                    <option value="PE" <?php if($cliente['regioes_interesse']=='PE') echo 'selected'; ?>>PE</option>
+                    <option value="PI" <?php if($cliente['regioes_interesse']=='PI') echo 'selected'; ?>>PI</option>
+                    <option value="RJ" <?php if($cliente['regioes_interesse']=='RJ') echo 'selected'; ?>>RJ</option>
+                    <option value="RN" <?php if($cliente['regioes_interesse']=='RN') echo 'selected'; ?>>RN</option>
+                    <option value="RS" <?php if($cliente['regioes_interesse']=='RS') echo 'selected'; ?>>RS</option>
+                    <option value="RO" <?php if($cliente['regioes_interesse']=='RO') echo 'selected'; ?>>RO</option>
+                    <option value="RR" <?php if($cliente['regioes_interesse']=='RR') echo 'selected'; ?>>RR</option>
+                    <option value="SC" <?php if($cliente['regioes_interesse']=='SC') echo 'selected'; ?>>SC</option>
+                    <option value="SP" <?php if($cliente['regioes_interesse']=='SP') echo 'selected'; ?>>SP</option>
+                    <option value="SE" <?php if($cliente['regioes_interesse']=='SE') echo 'selected'; ?>>SE</option>
+                    <option value="TO" <?php if($cliente['regioes_interesse']=='TO') echo 'selected'; ?>>TO</option>
                 </select>
             </div>
             <div>
-                <label class="block mb-1">Preço Mínimo</label>
-                <input type="number" name="preco_minimo" value="<?php echo htmlspecialchars($cliente['preco_minimo']); ?>" class="w-full border rounded p-2">
-            </div>
-            <div>
                 <label class="block mb-1">Preço Máximo</label>
-                <input type="number" name="preco_maximo" value="<?php echo htmlspecialchars($cliente['preco_maximo']); ?>" class="w-full border rounded p-2">
+                <input type="number" name="valor_max_interesse" value="<?php echo htmlspecialchars($cliente['valor_max_interesse']); ?>" class="w-full border rounded p-2">
             </div>
             <div>
                 <label class="block mb-1">Urgência</label>
