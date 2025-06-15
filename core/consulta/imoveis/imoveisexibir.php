@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
         exit;
     }
 
-    $imovel = $resultados[0]; // Dados principais do imóvel
+    $imovel = $resultados[0];
     $imoveis = [];
 
     foreach ($resultados as $linha) {

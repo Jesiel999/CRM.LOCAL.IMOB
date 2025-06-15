@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
     $sql = "SELECT C.*, 
         I.tipo_imovel AS imovel_interesse, 
         I.regioes_interesse AS regioes_interesse, 
-        I.tipo_imovel AS quartos_min_interesse, 
+        I.quartos_min AS quartos_min_interesse, 
         I.valor_maximo AS valor_max_interesse, 
         I.area_minima AS area_min_interesse,
         I.urgencia AS urgencia

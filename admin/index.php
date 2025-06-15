@@ -280,7 +280,7 @@
                             <button class="text-red-600 hover:text-red-900"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
-                    <!-- More client rows... -->
+
                 </tbody>
             </table>
         </div>
@@ -315,7 +315,6 @@
     </div>
 </div>
 
-<!-- Reports Tab -->
 <div id="reports-tab" class="tab-content">
     <h2 class="text-xl font-semibold text-gray-800 mb-6">Relatórios e Análises</h2>
     
@@ -410,7 +409,6 @@
     </div>
 </div>
 
-<!-- Calendar Tab -->
 <div id="calendar-tab" class="tab-content">
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-xl font-semibold text-gray-800">Agenda de Visitas e Compromissos</h2>
@@ -514,7 +512,6 @@
     </div>
 </div>
 
-<!-- Property Form Modal -->
 <div id="property-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
     <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-screen overflow-y-auto">
         <div class="p-6">

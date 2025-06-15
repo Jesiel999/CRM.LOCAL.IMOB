@@ -111,6 +111,9 @@
             color: #3B82F6;
             font-weight: 600;
         }
+        .imoveisDiv{
+            display: none;
+        }
     </style>
 </head>
 <script src="public/assets/js/script.js"></script>
@@ -184,6 +187,8 @@
                         </div>
                     </div>
                 </header>
+
+                <script src="public/assets/js/contato.js"></script>
 
                 <main id="conteudo" class="p-6">
                 </main>

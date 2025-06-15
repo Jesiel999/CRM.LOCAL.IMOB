@@ -1,12 +1,14 @@
 <?php
 include_once '../../core/db.php';
-include_once '../../core/editar/clientes/clientes.php';
+include_once '../../core/editar/clientes/consulta.php';
 ?>
 
 <div id="conteudo" class="mx-auto bg-white p-6 rounded-lg shadow">
     <h2 class="text-2xl text-center rounded-lg bg-gray-500 text-white font-semibold mb-6"><?php echo htmlspecialchars($cliente['nome']); ?></h2>
 
     <form action="core/editar/clientes/clientes.php" enctype="multipart/form-data" method="POST">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($cliente['id']); ?>">
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <div class="md:col-span-2 border-b pb-4">
@@ -21,9 +23,9 @@ include_once '../../core/editar/clientes/clientes.php';
             <div>
                 <label class="block mb-1">Tipo</label>
                 <select name="tipo_cliente" class="w-full border rounded p-2">
-                    <option value="Venda" <?php if($cliente['tipo_cliente']=='Comprador') echo 'selected'; ?>>Comprador</option>
-                    <option value="Aluguel" <?php if($cliente['tipo_cliente']=='Locatário') echo 'selected'; ?>>Locatário</option>
-                    <option value="Venda" <?php if($cliente['tipo_cliente']=='Outros') echo 'selected'; ?>>Outros</option>
+                    <option value="Comprador" <?php if($cliente['tipo_cliente']=='Comprador') echo 'selected'; ?>>Comprador</option>
+                    <option value="Locatário" <?php if($cliente['tipo_cliente']=='Locatário') echo 'selected'; ?>>Locatário</option>
+                    <option value="Outros" <?php if($cliente['tipo_cliente']=='Outros') echo 'selected'; ?>>Outros</option>
                 </select>
             </div>
             
@@ -39,12 +41,12 @@ include_once '../../core/editar/clientes/clientes.php';
 
             <div>
                 <label class="block mb-1">Telefone</label>
-                <input type="text" name="cpf_cnpj" value="<?php echo $cliente['telefone'];?>" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">    
+                <input type="text" name="telefone" value="<?php echo $cliente['telefone'];?>" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">    
             </div>
 
             <div>
                 <label class="block mb-1">Telefone Secundário</label>
-                <input type="text" name="rg_ie" value="<?php echo $cliente['telefone_secundario'];?>" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500"> 
+                <input type="text" name="telefone_secundario" value="<?php echo $cliente['telefone_secundario'];?>" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500"> 
             </div>
 
             <div class="md:col-span-2 border-b pb-4">
