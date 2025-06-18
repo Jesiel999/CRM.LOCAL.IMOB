@@ -5,7 +5,7 @@
 <div class="w-full h-full bg-white rounded-lg shadow overflow-hidden">
     <div class="p-4 border-b flex justify-between items-center">
         <div class="flex space-x-4">
-            <button onclick="sidebar('admin/clientes/cadastrar.php')" class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg shadow transition">
+            <button onclick="carregarPagina('admin/clientes/cadastrar.php')" class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg shadow transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5"/>
                 </svg>
@@ -15,7 +15,6 @@
             <button class="px-4 py-2 hover:bg-blue-100 hover:text-blue-700 rounded-lg">Compradores</button>
             <button class="px-4 py-2 hover:bg-blue-100 hover:text-blue-700 rounded-lg">Locatários</button>
             <button class="px-4 py-2 hover:bg-blue-100 hover:text-blue-700 rounded-lg">Proprietários</button>
-            <button class="px-4 py-2 hover:bg-blue-100 hover:text-blue-700 rounded-lg">Investidores</button>
         </div>
         <div class="flex items-center">
             <span class="text-sm text-gray-500 mr-2">Ordenar por:</span>
@@ -79,10 +78,10 @@
                             </span>
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-gray-500">15/06/2023</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-gray-500"><?php echo $cliente['data_contato']; ?></td>
                     <td class="px-6 py-4 whitespace-nowrap text-center font-medium">
-                        <button onclick="sidebar('admin/clientes/exibir.php?id=<?php echo $cliente['id']; ?>')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-user"></i></button>
-                        <button onclick="sidebar('admin/clientes/editar.php?id=<?php echo $cliente['id']; ?>')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>
+                        <button onclick="carregarPagina('admin/clientes/exibir.php?id=<?php echo $cliente['id']; ?>')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-user"></i></button>
+                        <button onclick="carregarPagina('admin/clientes/editar.php?id=<?php echo $cliente['id']; ?>')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>
                     </td>
                 </tr>
             </tbody>

@@ -130,19 +130,19 @@
                 <nav class="flex-1 overflow-y-auto px-4">
                     <p class="text-xs uppercase font-bold text-blue-200 mb-4 tracking-wider sidebar-text">Menu Principal</p>
                     
-                    <button onclick="sidebar('admin/imoveis/index.php'); setPageTitle('Imóveis')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
+                    <button onclick="carregarPagina('admin/imoveis/index.php', 'Imóveis')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
                         <i class="fas fa-building"></i>
                         <span class="sidebar-text">Imóveis</span>
-                    </button>
-                    <button onclick="sidebar('admin/clientes/index.php'); setPageTitle('Clientes')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
+                    </button> 
+                    <button onclick="carregarPagina('admin/clientes/index.php', 'Clientes')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
                         <i class="fas fa-user"></i>
                         <span class="sidebar-text">Clientes</span>
                     </button>
-                    <button onclick="sidebar('/admin/dashboard/index.php'); setPageTitle('Relatórios e Análises')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
+                    <button onclick="carregarPagina('/admin/dashboard/index.php', 'Relatórios e Análises')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
                         <i class="fas fa-chart-bar"></i>
                         <span class="sidebar-text">Relatórios</span>
                     </button>
-                    <button onclick="sidebar('/admin/agenda/index.php'); setPageTitle('Agenda de Visitas e Compromissos')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
+                    <button onclick="carregarPagina('/admin/agenda/index.php', 'Agenda de Visitas e Compromissos')" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
                         <i class="fas fa-calendar-alt"></i>
                         <span class="sidebar-text">Agenda</span>
                     </button>
@@ -152,7 +152,7 @@
                         <i class="fas fa-cog"></i>
                         <span class="sidebar-text">Configurações</span>
                     </button>
-                    <button onclick="sidebar('/core/loghout.php');" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
+                    <button onclick="carregarPagina('/core/loghout.php');" class="w-full flex items-center gap-3 px-2 py-3 rounded-lg hover:bg-blue-700">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="sidebar-text">Sair</span>
                     </button>

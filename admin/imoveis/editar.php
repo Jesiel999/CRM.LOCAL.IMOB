@@ -155,7 +155,7 @@ include_once '../../core/consulta/imoveis/imoveiseditar.php';
         </div>
 
         <div class="mt-6 flex justify-end space-x-4">
-            <button onclick="sidebar('admin/imoveis/listar.php'); setPageTitle('Imóveis')" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">Cancelar</button>
+            <button onclick="carregarPagina('admin/imoveis/index.php')" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">Cancelar</button>
             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Salvar Alterações</button>
         </div>
     </form>

@@ -295,10 +295,10 @@ include_once '../../core/consulta/imoveis/imoveisexibir.php';
                         <span class="text-sm font-medium"><?php echo htmlspecialchars($imovel['areautil']); ?> m²</span>
                     </div>
                     <div class="flex space-x-2">
-                        <button onclick="sidebar('public/imoveis/exibir.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-blue-600 hover:text-blue-800">
+                        <button onclick="carregarPagina('public/imoveis/exibir.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-blue-600 hover:text-blue-800">
                             <i class="fas fa-eye"></i>
                         </button>
-                        <button onclick="sidebar('admin/imoveis/editar.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-yellow-600 hover:text-yellow-800">
+                        <button onclick="carregarPagina('admin/imoveis/editar.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-yellow-600 hover:text-yellow-800">
                             <i class="fas fa-edit"></i>
                         </button>
                     </div>

@@ -1,7 +1,7 @@
 <?php include_once '../../core/db.php'; ?>
 <?php include_once '../../core/consulta/imoveis/imoveis.php'; ?>
 <?php include_once '../../core/consulta/imoveis/quantidadeImoveis.php';?>
-<button onclick="sidebar('admin/imoveis/cadastrar.php')" class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg shadow transition mb-5">
+<button onclick="carregarPagina('admin/imoveis/cadastrar.php')" class="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg shadow transition mb-5">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m7-7H5"/>
     </svg>
@@ -81,10 +81,10 @@
                     <span class="text-sm font-medium"><?php echo htmlspecialchars($imovel['areautil']); ?> m²</span>
                 </div>
                 <div class="flex space-x-2">
-                    <button onclick="sidebar('public/imoveis/exibir.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-blue-600 hover:text-blue-800">
+                    <button onclick="carregarPagina('public/imoveis/exibir.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-blue-600 hover:text-blue-800">
                         <i class="fas fa-eye"></i>
                     </button>
-                    <button onclick="sidebar('admin/imoveis/editar.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-yellow-600 hover:text-yellow-800">
+                    <button onclick="carregarPagina('admin/imoveis/editar.php?id=<?php echo $imovel['id']; ?>')" class="p-2 text-yellow-600 hover:text-yellow-800">
                         <i class="fas fa-edit"></i>
                     </button>
                 </div>

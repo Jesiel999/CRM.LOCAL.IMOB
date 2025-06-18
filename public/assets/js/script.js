@@ -9,9 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
             content.classList.toggle('expanded');
         });
     }
+    const savedPage = sessionStorage.getItem('paginaAtual');
+    const savedTitle = sessionStorage.getItem('tituloAtual');
+    
+    if(savedPage) {
+        carregarPagina(savedPage, savedTitle);
+    } else {
+        carregarPagina('/admin/dashboard/index.php', 'Relatórios e Análises');
+    }
 });
 
- function sidebar(page) {
+function carregarPagina(page, title ='') {
     const conteudo = document.querySelector('main');
     conteudo.innerHTML = '<p class="text-gray-500">Carregando...</p>';
 
@@ -24,17 +32,17 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(html => {
             conteudo.innerHTML = html;
+            if (title) setPageTitle(title);
+            sessionStorage.setItem('paginaAtual', page);
+            sessionStorage.setItem('tituloAtual', title);
         })
         .catch(error => {
             conteudo.innerHTML = `<p class="text-red-500">Erro: ${error.message}</p>`;
         });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    sidebar('/admin/dashboard/index.php');
-});
-
 function setPageTitle(title) {
     document.getElementById('page-title').innerText = title;
 }
+
 
