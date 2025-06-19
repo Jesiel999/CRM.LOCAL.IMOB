@@ -80,7 +80,7 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-center text-gray-500"><?php echo $cliente['data_contato']; ?></td>
                     <td class="px-6 py-4 whitespace-nowrap text-center font-medium">
-                        <button onclick="carregarPagina('admin/clientes/exibir.php?id=<?php echo $cliente['id']; ?>')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-user"></i></button>
+                        <button onclick="carregarPagina('admin/clientes/contato.php?id=<?php echo $cliente['id']; ?>')" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-user"></i></button>
                         <button onclick="carregarPagina('admin/clientes/editar.php?id=<?php echo $cliente['id']; ?>')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>
                     </td>
                 </tr>
