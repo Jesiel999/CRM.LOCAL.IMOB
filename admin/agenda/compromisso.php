@@ -1,9 +1,8 @@
 <?php 
-include_once '../../core/db.php'; 
-include_once '../../core/consulta/clientes/contato.php';
+include_once '../../core/db.php' ; 
+include_once '../../core/consulta/agenda/compromisso.php' ;
 ?>
 <form id="conteudo" method="POST" action="core/cadastro/clientes/contato.php" class="mt-6 space-y-6" enctype="multipart/form-data">
-    <input type="hidden" name="idCliente" value="<?php echo htmlspecialchars($cliente['idCliente']); ?>">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de Contato</label>
@@ -16,7 +15,17 @@ include_once '../../core/consulta/clientes/contato.php';
                 <option value="outro">Outro</option>
             </select>
         </div>
-
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Cliente</label>
+            <select name="idCliente" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+                <option value="">Selecione...</option>
+                <?php foreach ($clientes as $cliente): ?>
+                    <option value="<?= $cliente['idCliente'] ?>">
+                        <?= htmlspecialchars($cliente['nomeCliente']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Data Cadastro</label>
             <input type="date" name="data_cadastro" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">

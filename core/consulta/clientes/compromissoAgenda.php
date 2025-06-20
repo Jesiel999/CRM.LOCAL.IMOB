@@ -29,6 +29,7 @@ if ($visao === 'semanal') {
 
 $sql = "
 SELECT 
+    c.id AS id,
     c.nome AS cliente_nome,
     IM.id AS imovel_id,
     IM.codigo AS codigo_imovel,

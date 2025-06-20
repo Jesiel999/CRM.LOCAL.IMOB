@@ -43,19 +43,21 @@
                     for ($i = 0; $i < 7; $i++) {
                         $diaData = date('Y-m-d', strtotime("+$i days", strtotime($filtroDataInicio)));
                         $diaNumero = date('d', strtotime($diaData));
-                        echo '<div class="h-24 border rounded-lg p-1 overflow-hidden bg-white hover:bg-blue-50">';
+                        echo '<div class="min-h-32 border rounded-lg p-1 bg-white hover:bg-blue-50">';
                         echo '<div class="text-right text-sm font-bold">' . $diaNumero . '</div>';
 
                         if (isset($agendaPorDia[$diaData])) {
                             foreach ($agendaPorDia[$diaData] as $comp) {
-                                echo '<div class="mt-1 text-xs text-blue-600 truncate">';
+                                echo '<div class="mt-1 text-xs text-blue-700 bg-blue-50 border border-blue-400 rounded-md p-2 mb-1 shadow-sm">';
+                                echo '<div class="text-sm font-medium">' .  htmlspecialchars($comp["tipo_visita"]) . '</div>';
                                 echo '<div class="hover:underline cursor-pointer" onclick="carregarPagina(\'admin/clientes/editar.php?id=' . urlencode($comp['cliente_id']) . '\')">Cliente: ' . htmlspecialchars($comp["cliente_nome"]) . '</div>';
                                 if (!empty($comp["codigo_imovel"])) {
                                     echo '<div class="hover:underline cursor-pointer mt-1" onclick="carregarPagina(\'admin/imoveis/editar.php?id=' . urlencode($comp['imovel_id']) . '\')">Imóvel: ' . htmlspecialchars($comp['codigo_imovel']) . '</div>';
                                 }
                                 if (!empty($comp["observacao"])) {
                                     echo '<div class="mt-1"><strong>Obs:</strong> ' . htmlspecialchars($comp["observacao"]) . '</div>';
-                                }
+                                }                                
+                                echo '<button onclick="carregarPagina(\'admin/agenda/editarCompromisso.php?id=' . $comp['id'] . '\')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>';
                                 echo '</div>';
                             }
                         }
@@ -69,12 +71,13 @@
 
                     for ($dia = 1; $dia <= $diasNoMes; $dia++) {
                         $dataCompleta = sprintf('%04d-%02d-%02d', $anoAtual, $mesAtual, $dia);
-                        echo '<div class="h-24 border rounded-lg p-1 overflow-hidden bg-white hover:bg-blue-50">';
+                        echo '<div class="min-h-32 border rounded-lg p-1 bg-white hover:bg-blue-50">';
                         echo '<div class="text-right text-sm font-bold">' . $dia . '</div>';
 
                         if (isset($agendaPorDia[$dataCompleta])) {
                             foreach ($agendaPorDia[$dataCompleta] as $comp) {
-                                echo '<div class="mt-1 text-xs text-blue-600 truncate">';
+                                echo '<div class="mt-1 text-xs text-blue-700 bg-blue-50 border border-blue-400 rounded-md p-2 mb-1 shadow-sm">';
+                                echo '<div class="text-sm font-medium">'  .  htmlspecialchars($comp["tipo_visita"]) . '</div>';
                                 echo '<div class="hover:underline cursor-pointer" onclick="carregarPagina(\'admin/clientes/editar.php?id=' . urlencode($comp['cliente_id']) . '\')">Cliente: ' . htmlspecialchars($comp["cliente_nome"]) . '</div>';
                                 if (!empty($comp["codigo_imovel"])) {
                                     echo '<div class="hover:underline cursor-pointer mt-1" onclick="carregarPagina(\'admin/imoveis/editar.php?id=' . urlencode($comp['imovel_id']) . '\')">Imóvel: ' . htmlspecialchars($comp['codigo_imovel']) . '</div>';
@@ -82,6 +85,7 @@
                                 if (!empty($comp["observacao"])) {
                                     echo '<div class="mt-1"><strong>Obs:</strong> ' . htmlspecialchars($comp["observacao"]) . '</div>';
                                 }
+                                echo '<button onclick="carregarPagina(\'admin/agenda/editarCompromisso.php?id=' . $comp['id'] . '\')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>';
                                 echo '</div>';
                             }
                         }
@@ -99,30 +103,33 @@
             <h3 class="text-lg font-medium">Próximos Compromissos</h3>
         </div>
         <div class="divide-y divide-gray-200">
-            <?php foreach ($compromissos as $c): ?>
-                <div class="p-4 flex items-start hover:bg-gray-50 cursor-pointer">
-                    <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full text-blue-600">📅</div>
-                    <div class="ml-3 flex-1">
-                        <div class="flex items-center justify-between">
-                            <h4 class="text-sm font-medium"><?= htmlspecialchars($c['tipo_visita']) ?></h4>
-                            <span class="text-xs text-gray-500"><?= date('d/m/Y', strtotime($c['data_cadastro'])) ?></span>
-                        </div>
-                        <div class="text-xs text-gray-600 mt-1 hover:underline" onclick="carregarPagina('admin/clientes/editar.php?id=<?= urlencode($c['cliente_id']) ?>')">
-                            Cliente: <?= htmlspecialchars($c['cliente_nome']) ?>
-                        </div>
-                        <?php if (!empty($c["codigo_imovel"])): ?>
-                            <div class="text-xs text-gray-600 mt-1 hover:underline" onclick="carregarPagina('admin/imoveis/editar.php?id=<?= urlencode($c['imovel_id']) ?>')">
-                                Imóvel: <?= htmlspecialchars($c['codigo_imovel']) ?> | Nome: <?= htmlspecialchars($c['nome_imovel']) ?>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($c["observacao"])): ?>
-                            <div class="text-xs text-gray-600 mt-1">
-                                <strong>Observação:</strong> <?= htmlspecialchars($c["observacao"]) ?>
-                            </div>
-                        <?php endif; ?>
+          <?php foreach ($compromissos as $c): ?>
+            <div class="p-4 flex items-start hover:bg-gray-50 cursor-pointer border-b">
+                <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full text-blue-600">📅</div>
+                <div class="ml-3 flex-1">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-sm font-medium"><?= htmlspecialchars($c['tipo_visita']) ?></h4>
+                        <span class="text-xs text-gray-500"><?= date('d/m/Y', strtotime($c['data_cadastro'])) ?></span>
                     </div>
+                    <div class="text-xs text-gray-600 mt-1 hover:underline" onclick="carregarPagina('admin/clientes/editar.php?id=<?= urlencode($c['cliente_id']) ?>')">
+                        Cliente: <?= htmlspecialchars($c['cliente_nome']) ?>
+                    </div>
+                    <?php if (!empty($c["codigo_imovel"])): ?>
+                        <div class="text-xs text-gray-600 mt-1 hover:underline" onclick="carregarPagina('admin/imoveis/editar.php?id=<?= urlencode($c['imovel_id']) ?>')">
+                            Imóvel: <?= htmlspecialchars($c['codigo_imovel']) ?> | Nome: <?= htmlspecialchars($c['nome_imovel']) ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($c["observacao"])): ?>
+                        <div class="text-xs text-gray-600 mt-1">
+                            <strong>Observação:</strong> <?= htmlspecialchars($c["observacao"]) ?>
+                        </div>
+                    <?php endif; ?>
+                    <button onclick="carregarPagina('admin/agenda/editarCompromisso.php?id=<?= $c['id'] ?>')" class="mt-2 text-yellow-600 hover:text-yellow-900 mr-3">
+                        <i class="fas fa-edit"></i>
+                    </button>
                 </div>
-            <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
         </div>
     </div>
 </div>
