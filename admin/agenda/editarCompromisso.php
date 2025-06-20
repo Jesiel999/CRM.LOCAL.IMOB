@@ -1,26 +1,8 @@
 <?php 
 include_once '../../core/db.php';
-
-if (isset($_GET['id'])) {
-    $id = intval($_GET['id']);
-
-    $sql = "SELECT * FROM contato WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$id]);
-
-    $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$cliente) {
-        echo "Contato não encontrado.";
-        exit;
-    }
-} else {
-    echo "ID não informado.";
-    exit;
-}
-
-include_once '../../core/consulta/imoveis/imoveis.php';
+include_once '../../core/editar/agenda/consulta.php';
 include_once '../../core/consulta/clientes/select.php';
+include_once '../../core/consulta/imoveis/imoveis.php';
 ?>
 
 <form id="conteudo" method="POST" action="core/cadastro/clientes/update_contato.php" class="mt-6 space-y-6" enctype="multipart/form-data">
@@ -44,8 +26,8 @@ include_once '../../core/consulta/clientes/select.php';
             <select name="idCliente" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
                 <option value="">Selecione...</option>
                 <?php foreach ($clientes as $cli): ?>
-                    <option value="<?= $cli['idCliente'] ?>" <?= $cli['idCliente'] == $cliente['cliente_id'] ? 'selected' : '' ?>>
-                        <?= htmlspecialchars($cli['nomeCliente']) ?>
+                    <option value="<?= htmlspecialchars($cli['id']) ?>" <?= $cli['id'] == $cliente['cliente_id'] ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($cli['nome']) ?>
                     </option>
                 <?php endforeach; ?>
             </select>

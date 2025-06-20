@@ -57,7 +57,7 @@
                                 if (!empty($comp["observacao"])) {
                                     echo '<div class="mt-1"><strong>Obs:</strong> ' . htmlspecialchars($comp["observacao"]) . '</div>';
                                 }                                
-                                echo '<button onclick="carregarPagina(\'admin/agenda/editarCompromisso.php?id=' . $comp['id'] . '\')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>';
+                                echo '<button onclick="carregarPagina(\'admin/agenda/editarCompromisso.php?id=' . urlencode($comp['id']) . '\')" class="text-yellow-600 hover:text-yellow-900 mr-3"><i class="fas fa-edit"></i></button>';
                                 echo '</div>';
                             }
                         }
