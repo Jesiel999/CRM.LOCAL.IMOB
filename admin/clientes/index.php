@@ -1,6 +1,6 @@
 <?php include_once '../../core/db.php'; ?>
 <?php include_once '../../core/consulta/clientes/select.php'?>
-<?php include_once '../../core/consulta/clientes/quantidadeClientes.php'?>
+<?php include_once '../../core/consulta/dashboard/quantidadeClientes.php'?>
 
 <div class="w-full h-full bg-white rounded-lg shadow overflow-hidden">
     <div class="p-4 border-b flex justify-between items-center">

@@ -1,6 +1,7 @@
 <?php include_once '../../core/db.php'; ?>
-<?php include_once '../../core/consulta/imoveis/quantidadeImoveis.php'; ?>
-<?php include_once '../../core/consulta/clientes/quantidadeClientes.php'; ?>
+<?php include_once '../../core/consulta/dashboard/quantidadeImoveis.php'; ?>
+<?php include_once '../../core/consulta/dashboard/quantidadeClientes.php'; ?>
+<?php include_once '../../core/consulta/dashboard/tipoClienteG.php'; ?>
 
 <div id="property-grid-view">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
@@ -9,7 +10,14 @@
                 <div>
                     <p class="text-gray-500">Imóveis Disponíveis</p>
                     <p class="text-2xl font-bold"><?php echo $totalImovel?></p>
-                    <p class="text-sm text-gray-500 mt-1"><span class="text-green-500">+2</span> desde o mês passado</p>
+                    <?php if ($difImoveis != 0): ?>
+                        <p class="text-sm text-gray-500 mt-1">   
+                            <span class="<?= $difImoveis > 0 ? 'text-green-500' : 'text-red-500' ?>">
+                                <?= $difImoveis > 0 ? '+' . $difImoveis : $difImoveis ?>
+                            </span>
+                            desde o mês passado
+                        </p>
+                    <?php endif; ?>
                 </div>
                 <div class="p-3 rounded-full bg-blue-100 text-blue-600">
                     <i class="fas fa-home text-xl"></i>
@@ -21,7 +29,14 @@
                 <div>
                     <p class="text-gray-500">Clientes Ativos</p>
                     <p class="text-2xl font-bold"><?php echo $totalClientes?></p>
-                    <p class="text-sm text-gray-500 mt-1"><span class="text-green-500">+5</span> desde o mês passado</p>
+                    <?php if ($difClientes != 0): ?>
+                        <p class="text-sm text-gray-500 mt-1">
+                            <span class="<?= $difClientes > 0 ? 'text-green-500' : 'text-red-500' ?>">
+                                <?= $difClientes > 0 ? '+' . $difClientes : $difClientes ?>
+                            </span>
+                            desde o mês passado
+                        </p>
+                    <?php endif; ?>
                 </div>
                 <div class="p-3 rounded-full bg-green-100 text-green-600">
                     <i class="fas fa-users text-xl"></i>
@@ -78,10 +93,40 @@
         </div>
         <div class="bg-white p-6 rounded-lg shadow">
             <h3 class="text-lg font-medium mb-4">Clientes por Tipo</h3>
-            <div class="h-64 bg-gray-50 rounded-lg p-4 flex items-center justify-center">
-                <p class="text-gray-500">Gráfico de tipos de clientes</p>
+            <div class="h-64 bg-gray-50 rounded-lg p-4">
+                <canvas id="graficoClientesTipo"></canvas>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('graficoClientesTipo').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: <?= json_encode(array_keys($clientesPorTipo)) ?>,
+                        datasets: [{
+                            label: 'Clientes por Tipo',
+                            data: <?= json_encode(array_values($clientesPorTipo)) ?>,
+                            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    color: '#4B5563',
+                                    font: { size: 12 }
+                                }
+                            }
+                        }
+                    }
+                });
+        });
+        </script>
         <div class="bg-white p-6 rounded-lg shadow">
             <h3 class="text-lg font-medium mb-4">Bairros Mais Procurados</h3>
             <div class="h-64 bg-gray-50 rounded-lg p-4 flex items-center justify-center">
