@@ -117,6 +117,7 @@
     </style>
 </head>
 <script src="public/assets/js/script.js"></script>
+
     <body class="bg-gray-100 font-sans">
         <div class="flex h-screen overflow-hidden">
             <div id="sidebar" class="sidebar bg-blue-800 text-white w-64 md:w-64 collapsed:md:w-20 flex-shrink-0 flex flex-col transition-all duration-300">
@@ -189,7 +190,7 @@
                 </header>
 
                 <script src="public/assets/js/contato.js"></script>
-
+                
                 <main id="conteudo" class="p-6">
                 </main>
                 <script src="public/assets/js/carrosel.js"></script>
