@@ -113,7 +113,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Área útil (m²)*</label>
             <input name="areautil" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
@@ -122,6 +122,27 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">Área total (m²)*</label>
             <input name="areatotal" type="number" class="w-full px-3 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
         </div>
+        <div class="grid grid-cols-1 gap-3">
+            <div class="flex items-center space-x-3">
+                <input 
+                    type="checkbox" 
+                    name="enviar_olx" 
+                    id="enviar_olx"
+                    value="1"
+                    class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                <label for="enviar_olx" class="text-sm text-gray-700">Anunciar na OLX</label>
+            </div>
+            <div class="flex items-center space-x-3">
+                <input 
+                    type="checkbox" 
+                    name="enviar_site" 
+                    id="enviar_site"
+                    value="1"
+                    class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                <label for="enviar_site" class="text-sm text-gray-700">Anunciar no Site Próprio</label>
+            </div>
+        </div>
+
     </div>
 
 
